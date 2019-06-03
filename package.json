@@ -1,0 +1,30 @@
+{
+  "name": "fullstack2019_osa4",
+  "version": "0.0.1",
+  "description": "Sovelluksen rakenne ja tastaaminen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "watch": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jariharti/FullStack2019_osa4.git"
+  },
+  "author": "Jari Hartikainen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jariharti/FullStack2019_osa4/issues"
+  },
+  "homepage": "https://github.com/jariharti/FullStack2019_osa4#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.5.12"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
