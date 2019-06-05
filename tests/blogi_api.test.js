@@ -1,5 +1,5 @@
 /* Jari Hartikainen, 5.6.2019 */
-/* Aalto University, Course: Full Stack Web Development, Part 4: Blogilistan testit 4.8 ... 4.12*/
+/* Aalto University, Course: Full Stack Web Development, Part 4: Blogilistan testit 4.8 ... 4.14*/
 
 const mongoose = require('mongoose')
 const supertest = require('supertest')
@@ -88,6 +88,34 @@ test('if new blog is missing title and url, then response with status code 400 B
       .send(newBlog)
       .expect(400)
   
+})
+
+console.log ("Test 6........")
+test('When you delete succesfully blog, you should receive status code 204', async () => {
+  // This is unique ID that specifies Robert C. Martin's document
+  const deleteId = '/api/blogs/5a422ba71b54a676234d17fb'
+  
+    await api
+      .delete(deleteId)
+      .expect(204)
+})
+
+console.log ("Test 7........")
+test('When you update number of likes, you should receive status code 204, and likes value of 2222', async () => {
+  // This is unique ID that specifies Robert C. Martin's document
+  const updateIdElement = '/api/blogs/5a422ba71b54a676234d17fb'
+  const newLikes = {
+    likes:  1234567
+  }
+  
+  await api
+    .put(updateIdElement)
+    .send(newLikes)
+    .expect(201)
+    
+  const blogsAtEnd = await helper.blogsInDb()
+  const returnedNewBlog = blogsAtEnd.filter(data => data.id === '5a422ba71b54a676234d17fb')
+  expect(returnedNewBlog[0].likes).toBe(newLikes.likes)
 })
 
 afterAll(() => {
