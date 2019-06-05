@@ -51,7 +51,8 @@ describe('most active blog author', () => {
             __v: 0
           },
     ]
-
+/* Jari Hartikainen, 5.6.2019 */
+/* Aalto University, Course: Full Stack Web Development, Part 4: Apufunktioita ja yksikkötestejä 4.6*/
 const mostActiveBlogWriter =
 {
     author: "Robert C. Martin",

@@ -1,7 +1,6 @@
 const mostLikes = (blogs) => {
     const allBlogAuthors = blogs.map(blog => blog.author)
     const uniqueBlogAuthors = [...new Set(allBlogAuthors)]
-    console.log ("uniqueBlogAuthors......",uniqueBlogAuthors)
     
     let mostPopularBlogger
     let previousMax = 0

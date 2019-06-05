@@ -5,7 +5,6 @@ const favoriteBlog = (blogs) => {
       author: blogLikes.author,
       likes: blogLikes.likes
     }
-  console.log("blogLikes", blogLikes)
 }
 
 
