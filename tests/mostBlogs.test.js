@@ -1,3 +1,6 @@
+/* Jari Hartikainen, 5.6.2019 */
+/* Aalto University, Course: Full Stack Web Development, Part 4: Apufunktioita ja yksikkötestejä 4.6*/
+
 const utils_mostBlogs = require('../utils/mostBlogs')
 
 describe('most active blog author', () => {

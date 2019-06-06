@@ -1,3 +1,6 @@
+/* Jari Hartikainen, 5.6.2019 */
+/* Aalto University, Course: Full Stack Web Development, Part 4: Blogilistan testit 4.5*/
+
 const utils_favoriteBlog = require('../utils/favoriteBlog')
 
 describe('most liked blog', () => {
@@ -56,7 +59,7 @@ describe('most liked blog', () => {
 /* Aalto University, Course: Full Stack Web Development, Part 4: Apufunktioita ja yksikkötestejä 4.5*/
 
 
-    const mostLikedBlog =
+const mostLikedBlog =
 {
     title: "Canonical string reduction",
     author: "Edsger W. Dijkstra",
