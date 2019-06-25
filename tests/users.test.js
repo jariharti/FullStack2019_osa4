@@ -10,7 +10,7 @@ const User = require('../models/user')
 
 beforeEach(async () => {
   await User.deleteMany({})
-    
+
   let userObject1 = new User(helper.initialUsers[0])
   await userObject1.save()
 
@@ -24,9 +24,9 @@ beforeEach(async () => {
 // Test 4.15: blogilistan laajennus, step4
 test('test that new users is stored to the database', async () => {
   const newUser = {
-      username: 'RobinMa',
-      name: 'Robin C Mayor',
-      password:'password3',
+    username: 'RobinMa',
+    name: 'Robin C Mayor',
+    password:'password3',
   }
 
   await api
@@ -35,51 +35,21 @@ test('test that new users is stored to the database', async () => {
     .expect(200)
 
   const usersAtEnd = await helper.usersInDb()
-    expect(usersAtEnd.length).toBe(helper.initialUsers.length + 1)
+  expect(usersAtEnd.length).toBe(helper.initialUsers.length + 1)
 
   const newUsers = usersAtEnd.map(n => n.username)
-    expect(newUsers).toContain(
-      'RobinMa'
-    )
+  expect(newUsers).toContain(
+    'RobinMa'
+  )
 })
 
 // Test 4.16: blogilistan laajennus, step4
 // Käyttäjätunnuksen on oltava järjestelmässä uniikki.
 test('if user name is not unique, reply with status code 400 Bad request', async () => {
   const newUser = {
-      username: 'RoCMa',
-      name: 'Robin C Mayor',
-      password:'password3',
-  }
-
-  await api
-    .post('/api/users')
-    .send(newUser)
-    .expect(400)
-}) 
-
-// Test 4.16: blogilistan laajennus, step4
-// Käyttäjätunnuksen tulee olla vähintään 3 merkkiä pitkä
-test('if user name or password is shoter than three chracteristics, reply with status code 400 Bad request', async () => {
-  const newUser = {
-      username: 'Ro',
-      name: 'Robin C Mayor',
-      password:'password',
-  }
-
-  await api
-    .post('/api/users')
-    .send(newUser)
-    .expect(400)
-}) 
-
-// Test 4.16: blogilistan laajennus, step4
-// Salasanan tulee olla vähintään 3 merkkiä pitkä
-test('if user name or password is shoter than three chracteristics, reply with status code 400 Bad request', async () => {
-  const newUser = {
-      username: 'RobMa',
-      name: 'Robin C Mayor',
-      password:'pw',
+    username: 'Mikki',
+    name: 'Robin C Mayor',
+    password:'password3',
   }
 
   await api
@@ -88,9 +58,35 @@ test('if user name or password is shoter than three chracteristics, reply with s
     .expect(400)
 })
 
+// Test 4.16: blogilistan laajennus, step4
+// Käyttäjätunnuksen tulee olla vähintään 3 merkkiä pitkä
+test('if user name or password is shoter than three chracteristics, reply with status code 400 Bad request', async () => {
+  const newUser = {
+    username: 'Ro',
+    name: 'Robin C Mayor',
+    password:'password',
+  }
 
+  await api
+    .post('/api/users')
+    .send(newUser)
+    .expect(400)
+})
 
+// Test 4.16: blogilistan laajennus, step4
+// Salasanan tulee olla vähintään 3 merkkiä pitkä
+test('if user name or password is shoter than three chracteristics, reply with status code 400 Bad request', async () => {
+  const newUser = {
+    username: 'RobMa',
+    name: 'Robin C Mayor',
+    password:'pw',
+  }
 
+  await api
+    .post('/api/users')
+    .send(newUser)
+    .expect(400)
+})
 
 afterAll(() => {
   mongoose.connection.close()

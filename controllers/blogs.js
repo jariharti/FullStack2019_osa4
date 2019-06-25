@@ -9,14 +9,16 @@ const middleware = require('../utils/middleware')
 
 // List all blogs when you enter to api/blogs www.page, ang give "GET" comamnd
 blogsRouter.get('/', async (request, response) => {
+
   const blogs = await Blog
     //populate is mongoose function -> show all -users- data + user specif data, including username, name and id
+    //.find({}).populate('user')
     .find({}).populate('user', { username: 1, name: 1, id: 1 })
- 
   response.json(blogs.map(blog => blog.toJSON()))
 })
 
 blogsRouter.get('/:id', async (request, response, next) => {
+
   try{
     const blog = await Blog.findById(request.params.id).populate('user', { username: 1, name: 1, id: 1 })
     if (blog) {
@@ -65,7 +67,7 @@ blogsRouter.post('/', async (request, response, next) => {
       author: body.author,
       url: body.url,
       likes: body.likes,
-      user: user._id
+      user:user.id
     })
 
     // New blog object, that was saved to databse
@@ -88,14 +90,11 @@ blogsRouter.delete('/:id', async (request, response, next) => {
 
   // Find out who is trying to delete document
 
-   var token = middleware.getTokenFrom(request)
-   request.token = token
+  var token = middleware.getTokenFrom(request)
+  request.token = token
 
-   try {
-
+  try {
     const decodedToken = jwt.verify(request.token, process.env.SECRET)
-
-
     if (!token || !decodedToken.id) {
       return response.status(401).json({ error: 'token missing or invalid' })
     }
@@ -106,20 +105,20 @@ blogsRouter.delete('/:id', async (request, response, next) => {
     // Find out who created the document. Every document has user property, which includes username, name and id (user id)
     // You can find out information from user by seraching document its id
     const blog = await Blog.findById(request.params.id)
-  
+
+
     // Find out author details based on user id
     const UserWhoCreated = await User.findById(blog.user)
 
     // Only person who created the document, can delete the document. Compare usernames, because they are unique in this system
-    console.log("userWhoDeletes.username -----------------------------xxxxxxxxxxx",userWhoDeletes.username)
     if (userWhoDeletes.username === UserWhoCreated.username) {
       await Blog.findByIdAndRemove(request.params.id)
       response.status(204).end()
     }
     else {
       return response.status(401).json({ error: 'You are not authorized to delete this document' })
-     }
     }
+  }
   catch (exception) {
     next(exception)
   }
@@ -138,7 +137,6 @@ blogsRouter.put('/:id', (request, response, next) => {
 
   Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
     .then(updatedBlog => {
-      console.log
       response.json(updatedBlog.toJSON())
     })
     .catch(error => next(error))

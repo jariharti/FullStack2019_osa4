@@ -4,63 +4,62 @@ const User = require('../models/user')
 const initialBlogs = [
   {
     likes: 10,
-    title: "First class tests",
-    author: "Robert C. Martin",
-    url: "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
-    user: "5cf93aa4c49892070fc7f729",
-    _id: "5cf96010a863f304228d3e7c",
+    title: 'First class tests',
+    author: 'Mikki Hiiri',
+    url: 'http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll',
+    user: '5d10e9ff8a95ec05dbfb4e66',
+    _id: '5cf96010a863f304228d3e7c',
     __v: 0
   },
   {
     likes: 0,
-    title: "TDD harms architecture",
-    author: "Robert C. Martin",
-    url: "http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html",
-    user: "5cf93aa4c49892070fc7f729",
-    _id: "5cf96010a863f304228d3e7d",
+    title: 'TDD harms architecture',
+    author: 'Mikki Hiiri',
+    url: 'http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html',
+    user: '5d10e9ff8a95ec05dbfb4e66',
+    _id: '5cf96010a863f304228d3e7d',
     __v: 0
   },
   {
     likes: 7,
-    title: "React patterns",
-    author: "Michael Chan",
-    url: "https://reactpatterns.com/",
-    user: "5cf95d8b2ed5ec038d9ec0a9",
-    _id: "5cf96010a863f304228d3e7e",
+    title: 'React patterns',
+    author: 'Hessu Hopo',
+    url: 'https://reactpatterns.com/',
+    user: '5d10ea108a95ec05dbfb4e67',
+    _id: '5cf96010a863f304228d3e7e',
     __v: 0
   },
   {
     likes: 12,
-    title: "Canonical string reduction",
-    author: "Edsger W. Dijkstra",
-    url: "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
-    user: "5cf93bdec49892070fc7f72a",
-    _id: "5a422b3a1b54a676234d17f9",
-    title: "Canonical string reduction",
+    title: 'Canonical string reduction',
+    author: 'Aku Ankka',
+    url: 'http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html',
+    user: '5d10ea1b8a95ec05dbfb4e68',
+    _id: '5a422b3a1b54a676234d17f9',
     __v: 0
   },
-  
+
 ]
 
 const initialUsers = [
-      {
-        username: 'EdWDi',
-        name: 'Edsger W. Dijkstra',
-        _id: '5cf93bdec49892070fc7f72a',
-        passwordHash:'$2b$10$ZKhtBfWSnrMRIYOIxSnWHOaAfb3u6EvhCOjpD.AvCWQ3XbetM4jkW'
-      },
-      {
-        username: 'RoCMa',
-        name: 'Robert C. Martin',
-        _id: '5cf93aa4c49892070fc7f729',
-        passwordHash: '$2b$10$sOaQEDbti1cHb/6wbysKkeUNphFVGj1oqA47KTRDqKLTduX5KQJCK'
-      },
-      {
-        username: 'MiCh',
-        name: 'Michael Chan',
-        _id: '5cf7c1d024eef4c2ec034c8b',
-        passwordHash: '$2b$10$rG40d4CelkZlvLkGrq2YxeWI3h26I98QrafNMZ08aQVuXNdIBT8IS'
-      }
+  {
+    username: 'Mikki',
+    name: 'Mikki Hiiri',
+    _id: '5d10e9ff8a95ec05dbfb4e66',
+    passwordHash:'$2b$10$T0lOUEvss9RQC/c/c0CL3OnWqxmfD1ZCdFEK2QlA8OAJaTw8EjI1e'
+  },
+  {
+    username: 'Hessu',
+    name: 'Hessu Hopo',
+    _id: '5d10ea108a95ec05dbfb4e67',
+    passwordHash: '$2b$10$qbQWX3dBAwLGZtk7MSUSmeQs4VYC4fYZ7Pd90Z6PW4E50CD6C9xey'
+  },
+  {
+    username: 'Aku',
+    name: 'Aku Ankka',
+    _id: '5d10ea1b8a95ec05dbfb4e68',
+    passwordHash: '$2b$10$LbzRzQz2kU1ypNmvCsrVauaoeuY3BW6VJGMmXuqeki3AXRd/VHUOi'
+  }
 ]
 
 

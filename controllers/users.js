@@ -4,8 +4,8 @@ const User = require('../models/user')
 
 usersRouter.get('/', async (request, response) => {
   const users = await User
-      //populate is mongoose function -> show all - blogs-  data + user specif data, including username, name and id
-    .find({}).populate('blogs', { title: 1, author: 1, url: 1, id: 1})
+    //populate is mongoose function -> show all - blogs-  data + user specif data, including username, name and id
+    .find({}).populate('blogs', { title: 1, author: 1, url: 1, id: 1 })
 
   response.json(users.map(u => u.toJSON()))
 })
